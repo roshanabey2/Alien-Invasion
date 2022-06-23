@@ -14,9 +14,12 @@ class Ship():
     # Start each new ship at the bottom center
     self.rect.centerx = self.screen_rect.centerx
     self.rect.bottom = self.screen_rect.bottom
+    print(self.rect.centerx)
 
     #stores a decimal value for the ship's center
     self.center = float(self.rect.centerx)
+    print(self.center)
+    print(self.rect.center)
 
     #Movement Flag
     self.moving_right = False
@@ -25,9 +28,9 @@ class Ship():
   def update(self):
     """Update the ship's position based on the movement flag"""
     if self.moving_right and self.rect.right < self.screen_rect.right:
-      self.rect.center += self.ai_settings.ship_speed_factor
-    elif self.moving_left and seld.rect.left > 0:
-      self.rect.center -= self.ai_settings.ship_speed_factor
+      self.center += self.ai_settings.ship_speed_factor
+    elif self.moving_left and self.rect.left > 0:
+      self.center -= self.ai_settings.ship_speed_factor
 
     # Update rect object from self.center
     self.rect.centerx = self.center

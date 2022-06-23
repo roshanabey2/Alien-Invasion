@@ -26,14 +26,14 @@ def check_keyup_events(event, ship):
       ship.moving_left = False
 
 
-def check_events(ship, ai_settings, ship, bullets):
+def check_events(ai_settings, screen, ship, bullets):
   """Respond to keypresses and mouse events."""
   #checks for keybooard and mouse movements
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       sys.exit()
     elif event.type == pygame.KEYDOWN:
-      check_keydown_events(event, ai_settings, ship, bullets)
+      check_keydown_events(event, ai_settings, screen, ship, bullets)
     elif event.type == pygame.KEYUP:
       check_keyup_events(event, ship)
         
@@ -44,6 +44,8 @@ def update_screen(ai_settings, screen, ship, bullets):
     #redraws screen during each pass through the loop
     screen.fill(ai_settings.bg_color)
     #Redraw all bullets behind ship and aliens
+    for bullet in bullets.sprites():
+      bullet.draw_bullet()
     ship.blitme()
     
     # Make the most recently drawn visible
